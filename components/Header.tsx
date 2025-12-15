@@ -31,12 +31,17 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          {/* Assumes logo.png is placed in the public folder */}
-          <img 
-            src="/logo.png" 
-            alt="Thalès Informatique" 
-            className="h-10 md:h-14 w-auto object-contain"
-          />
+          <svg viewBox="0 0 220 54" className="h-10 md:h-12 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="34" fontSize="32" fontWeight="bold" fontFamily="sans-serif" fill="#0068b3" letterSpacing="-1">TH</text>
+            
+            {/* Stylized A */}
+            <path d="M53 34 L62 8 L71 34" stroke="#00aeef" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M56 26 L68 26" stroke="#0068b3" strokeWidth="3" strokeLinecap="round"/>
+            
+            <text x="74" y="34" fontSize="32" fontWeight="bold" fontFamily="sans-serif" fill="#0068b3" letterSpacing="-1">LES</text>
+            
+            <text x="2" y="50" fontSize="11" fontWeight="500" fontFamily="sans-serif" fill="#0068b3" letterSpacing="0.28em" className="uppercase">Informatique</text>
+          </svg>
         </a>
 
         {/* Desktop Nav */}
