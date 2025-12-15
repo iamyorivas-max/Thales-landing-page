@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Linkedin } from 'lucide-react';
+import { MapPin, Phone, Mail, Linkedin, Printer } from 'lucide-react';
 
 const Footer: React.FC = () => {
   // Custom Logo Component for Footer (White variant)
@@ -55,16 +55,20 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Contact</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="mt-0.5 text-thales-500" />
-                <span>Casablanca, Maroc<br/>(Adresse fictive pour démo)</span>
+                <MapPin size={18} className="mt-0.5 text-thales-500 flex-shrink-0" />
+                <span>310, rue Omar Riffi.<br/>20120, Casablanca<br/>Maroc.</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={18} className="text-thales-500" />
-                <a href="tel:+212522000000" className="hover:text-white">+212 5 22 00 00 00</a>
+                <Phone size={18} className="text-thales-500 flex-shrink-0" />
+                <a href="tel:+212522548780" className="hover:text-white">Tél : +212 5 22 54 87 80</a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={18} className="text-thales-500" />
-                <a href="mailto:contact@thales-informatique.ma" className="hover:text-white">contact@thales-informatique.ma</a>
+                <Printer size={18} className="text-thales-500 flex-shrink-0" />
+                <span>Fax : +212 5 22 44 65 81</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-thales-500 flex-shrink-0" />
+                <a href="mailto:marketing@thales.ma" className="hover:text-white">marketing@thales.ma</a>
               </li>
             </ul>
           </div>
