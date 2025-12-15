@@ -3,13 +3,35 @@ import { Send, CheckCircle, Lock } from 'lucide-react';
 
 const ContactFormSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simulate API call
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 1000);
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xzznqdkk", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer.");
+      }
+    } catch (error) {
+      alert("Une erreur s'est produite. Veuillez vérifier votre connexion.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -87,33 +109,33 @@ const ContactFormSection: React.FC = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="nom" className="block text-sm font-medium text-slate-700 mb-1">Nom & Prénom <span className="text-red-500">*</span></label>
-                      <input type="text" id="nom" required className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="Votre nom complet" />
+                      <input type="text" id="nom" name="nom" required className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="Votre nom complet" />
                     </div>
                     <div>
                       <label htmlFor="fonction" className="block text-sm font-medium text-slate-700 mb-1">Fonction</label>
-                      <input type="text" id="fonction" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="DG, DAF, DSI..." />
+                      <input type="text" id="fonction" name="fonction" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="DG, DAF, DSI..." />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email professionnel <span className="text-red-500">*</span></label>
-                      <input type="email" id="email" required className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="nom@entreprise.ma" />
+                      <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="nom@entreprise.ma" />
                     </div>
                     <div>
                       <label htmlFor="tel" className="block text-sm font-medium text-slate-700 mb-1">Téléphone <span className="text-red-500">*</span></label>
-                      <input type="tel" id="tel" required className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="+212 6..." />
+                      <input type="tel" id="tel" name="telephone" required className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="+212 6..." />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="entreprise" className="block text-sm font-medium text-slate-700 mb-1">Entreprise</label>
-                      <input type="text" id="entreprise" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="Nom de votre société" />
+                      <input type="text" id="entreprise" name="entreprise" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all" placeholder="Nom de votre société" />
                     </div>
                     <div>
                       <label htmlFor="secteur" className="block text-sm font-medium text-slate-700 mb-1">Secteur d'activité</label>
-                      <select id="secteur" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all">
+                      <select id="secteur" name="secteur" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all">
                         <option value="">Sélectionner...</option>
                         <option value="industrie">Industrie</option>
                         <option value="commerce">Commerce & Distribution</option>
@@ -128,14 +150,14 @@ const ContactFormSection: React.FC = () => {
 
                   <div>
                     <label htmlFor="besoin" className="block text-sm font-medium text-slate-700 mb-1">Votre besoin</label>
-                    <select id="besoin" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all mb-3">
+                    <select id="besoin" name="besoin" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all mb-3">
                       <option value="diagnostic">Demander un diagnostic SI</option>
                       <option value="demo_erp">Démonstration ERP Sage</option>
                       <option value="conseil">Conseil en Transformation Digitale</option>
                       <option value="audit">Audit Infrastructure & Sécurité</option>
                       <option value="contact">Prise de contact générale</option>
                     </select>
-                    <textarea className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all h-24" placeholder="Détaillez brièvement votre projet..."></textarea>
+                    <textarea id="message" name="message" className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-thales-500 focus:ring-2 focus:ring-thales-200 outline-none transition-all h-24" placeholder="Détaillez brièvement votre projet..."></textarea>
                   </div>
 
                   <div className="flex items-start gap-3">
@@ -145,9 +167,13 @@ const ContactFormSection: React.FC = () => {
                     </label>
                   </div>
 
-                  <button type="submit" className="w-full bg-thales-700 hover:bg-thales-800 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
-                    Envoyer ma demande
-                    <Send size={18} />
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className={`w-full bg-thales-700 hover:bg-thales-800 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  >
+                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
+                    {!isSubmitting && <Send size={18} />}
                   </button>
                   
                   <div className="flex items-center justify-center gap-2 text-slate-400 text-xs mt-4">
