@@ -2,25 +2,6 @@ import React from 'react';
 import { MapPin, Phone, Mail, Linkedin, Printer, Facebook, Instagram, Youtube } from 'lucide-react';
 
 const Footer: React.FC = () => {
-  // Custom Logo Component for Footer (White variant)
-  const ThalesLogoWhite = () => (
-    <div className="flex flex-col select-none">
-      <div className="flex items-baseline">
-        <span className="text-2xl md:text-3xl font-bold text-white tracking-tight" style={{ fontFamily: 'Arial, sans-serif' }}>TH</span>
-        <div className="relative mx-[1px] w-[18px] md:w-[22px] h-[24px] md:h-[30px] flex items-end justify-center">
-            <svg viewBox="0 0 100 100" className="w-full h-full text-thales-500 fill-current">
-                <path d="M50 5 L95 95 L75 95 L50 35 L25 95 L5 95 Z" />
-                <path d="M35 70 L65 70 L60 80 L40 80 Z" fill="#002e5d" /> 
-            </svg>
-        </div>
-        <span className="text-2xl md:text-3xl font-bold text-white tracking-tight" style={{ fontFamily: 'Arial, sans-serif' }}>LES</span>
-      </div>
-      <span className="text-[10px] md:text-xs text-white font-medium tracking-[0.2em] -mt-1 uppercase text-justify w-full flex justify-between opacity-80">
-        <span>I</span><span>N</span><span>F</span><span>O</span><span>R</span><span>M</span><span>A</span><span>T</span><span>I</span><span>Q</span><span>U</span><span>E</span>
-      </span>
-    </div>
-  );
-
   return (
     <footer className="bg-thales-900 text-slate-300 py-12 border-t border-thales-800">
       <div className="container mx-auto px-6 md:px-12">
@@ -28,7 +9,12 @@ const Footer: React.FC = () => {
           
           <div className="col-span-1 md:col-span-2">
             <div className="mb-6">
-              <ThalesLogoWhite />
+              {/* Logo with filter to make it white. Requires transparent PNG logo.png in public folder */}
+              <img 
+                src="/logo.png" 
+                alt="Thalès Informatique" 
+                className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90"
+              />
             </div>
             <p className="mb-6 max-w-sm text-slate-300">
               Partenaire de confiance des entreprises marocaines depuis 28 ans pour l'intégration ERP, la gestion des infrastructures et la transformation digitale.

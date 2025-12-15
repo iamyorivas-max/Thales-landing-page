@@ -20,26 +20,6 @@ const Header: React.FC = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  // Custom Logo Component to match the image provided
-  const ThalesLogo = () => (
-    <div className="flex flex-col select-none">
-      <div className="flex items-baseline">
-        <span className="text-2xl md:text-3xl font-bold text-thales-700 tracking-tight" style={{ fontFamily: 'Arial, sans-serif' }}>TH</span>
-        {/* Stylized 'A' Triangle representation */}
-        <div className="relative mx-[1px] w-[18px] md:w-[22px] h-[24px] md:h-[30px] flex items-end justify-center">
-            <svg viewBox="0 0 100 100" className="w-full h-full text-thales-500 fill-current">
-                <path d="M50 5 L95 95 L75 95 L50 35 L25 95 L5 95 Z" />
-                <path d="M35 70 L65 70 L60 80 L40 80 Z" fill="white" /> 
-            </svg>
-        </div>
-        <span className="text-2xl md:text-3xl font-bold text-thales-700 tracking-tight" style={{ fontFamily: 'Arial, sans-serif' }}>LES</span>
-      </div>
-      <span className="text-[10px] md:text-xs text-thales-700 font-medium tracking-[0.2em] -mt-1 uppercase text-justify w-full flex justify-between">
-        <span>I</span><span>N</span><span>F</span><span>O</span><span>R</span><span>M</span><span>A</span><span>T</span><span>I</span><span>Q</span><span>U</span><span>E</span>
-      </span>
-    </div>
-  );
-
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
@@ -51,7 +31,12 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <ThalesLogo />
+          {/* Assumes logo.png is placed in the public folder */}
+          <img 
+            src="/logo.png" 
+            alt="Thalès Informatique" 
+            className="h-10 md:h-14 w-auto object-contain"
+          />
         </a>
 
         {/* Desktop Nav */}
