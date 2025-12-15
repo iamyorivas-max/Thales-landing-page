@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Linkedin, Printer } from 'lucide-react';
+import { MapPin, Phone, Mail, Linkedin, Printer, Facebook, Instagram, Youtube } from 'lucide-react';
 
 const Footer: React.FC = () => {
   // Custom Logo Component for Footer (White variant)
@@ -33,9 +33,18 @@ const Footer: React.FC = () => {
             <p className="mb-6 max-w-sm text-slate-300">
               Partenaire de confiance des entreprises marocaines depuis 28 ans pour l'intégration ERP, la gestion des infrastructures et la transformation digitale.
             </p>
-            <div className="flex gap-4">
-               <a href="#" className="w-10 h-10 rounded-full bg-thales-800 flex items-center justify-center hover:bg-thales-500 hover:text-white transition-colors">
+            <div className="flex gap-3">
+               <a href="#" className="w-10 h-10 rounded-full bg-thales-800 flex items-center justify-center hover:bg-thales-500 hover:text-white transition-colors" aria-label="LinkedIn">
                   <Linkedin size={20} />
+               </a>
+               <a href="#" className="w-10 h-10 rounded-full bg-thales-800 flex items-center justify-center hover:bg-thales-500 hover:text-white transition-colors" aria-label="Facebook">
+                  <Facebook size={20} />
+               </a>
+               <a href="#" className="w-10 h-10 rounded-full bg-thales-800 flex items-center justify-center hover:bg-thales-500 hover:text-white transition-colors" aria-label="Instagram">
+                  <Instagram size={20} />
+               </a>
+               <a href="#" className="w-10 h-10 rounded-full bg-thales-800 flex items-center justify-center hover:bg-thales-500 hover:text-white transition-colors" aria-label="YouTube">
+                  <Youtube size={20} />
                </a>
             </div>
           </div>
