@@ -35,7 +35,7 @@ const ContactFormSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-thales-900 relative overflow-hidden">
+    <section id="contact" className="py-24 bg-thales-900 relative overflow-hidden scroll-mt-20">
       {/* Background Decor */}
       <div className="absolute inset-0 bg-gradient-to-br from-thales-900 to-slate-900 z-0"></div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
@@ -46,47 +46,25 @@ const ContactFormSection: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16">
+        
+        {/* Grid Layout: 
+            Mobile: Title -> Form -> Testimonials (Vertical stack)
+            Desktop: Left Col (Title + Testimonials) | Right Col (Form)
+        */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          <div className="lg:w-5/12 text-white">
+          {/* 1. Title Block (Top on Mobile, Top-Left on Desktop) */}
+          <div className="lg:col-span-5 text-white">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
               Prêt à transformer votre entreprise ?
             </h2>
-            <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+            <p className="text-slate-300 text-lg leading-relaxed">
               Obtenez un diagnostic gratuit de votre SI ou une démonstration personnalisée de nos solutions ERP. Nos experts vous répondent sous 24h.
             </p>
-            
-            <ul className="space-y-4 mb-12">
-              <li className="flex items-center gap-3 text-slate-300">
-                <CheckCircle className="text-thales-500" size={20} />
-                <span>Audit préliminaire sans engagement</span>
-              </li>
-              <li className="flex items-center gap-3 text-slate-300">
-                <CheckCircle className="text-thales-500" size={20} />
-                <span>Expertise certifiée (Sage, Microsoft)</span>
-              </li>
-              <li className="flex items-center gap-3 text-slate-300">
-                <CheckCircle className="text-thales-500" size={20} />
-                <span>Accompagnement sur mesure</span>
-              </li>
-            </ul>
-
-            <div className="bg-thales-800/50 p-6 rounded-lg border border-thales-700 backdrop-blur-sm">
-              <div className="flex items-start gap-4">
-                 <div className="w-12 h-12 rounded-full bg-thales-700 flex-shrink-0 flex items-center justify-center text-thales-300">
-                    <span className="font-bold text-xl">“</span>
-                 </div>
-                 <div>
-                    <p className="italic text-slate-300 mb-4">
-                      "L'équipe Thalès a su comprendre nos enjeux industriels et déployer une solution Sage qui a optimisé notre production de 30%."
-                    </p>
-                    <p className="font-bold text-white">— Directeur Général, Industrie Agroalimentaire</p>
-                 </div>
-              </div>
-            </div>
           </div>
 
-          <div className="lg:w-7/12">
+          {/* 2. Form Block (Middle on Mobile, Right Column on Desktop) */}
+          <div className="lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:row-span-2">
             <div className="bg-white rounded-2xl p-8 md:p-10 shadow-2xl">
               {submitted ? (
                 <div className="text-center py-16">
@@ -184,6 +162,39 @@ const ContactFormSection: React.FC = () => {
               )}
             </div>
           </div>
+
+          {/* 3. Testimonials & Bullets (Bottom on Mobile, Bottom-Left on Desktop) */}
+          <div className="lg:col-span-5 text-white">
+            <ul className="space-y-4 mb-12">
+              <li className="flex items-center gap-3 text-slate-300">
+                <CheckCircle className="text-thales-500" size={20} />
+                <span>Audit préliminaire sans engagement</span>
+              </li>
+              <li className="flex items-center gap-3 text-slate-300">
+                <CheckCircle className="text-thales-500" size={20} />
+                <span>Expertise certifiée (Sage, Microsoft)</span>
+              </li>
+              <li className="flex items-center gap-3 text-slate-300">
+                <CheckCircle className="text-thales-500" size={20} />
+                <span>Accompagnement sur mesure</span>
+              </li>
+            </ul>
+
+            <div className="bg-thales-800/50 p-6 rounded-lg border border-thales-700 backdrop-blur-sm">
+              <div className="flex items-start gap-4">
+                 <div className="w-12 h-12 rounded-full bg-thales-700 flex-shrink-0 flex items-center justify-center text-thales-300">
+                    <span className="font-bold text-xl">“</span>
+                 </div>
+                 <div>
+                    <p className="italic text-slate-300 mb-4">
+                      "L'équipe Thalès a su comprendre nos enjeux industriels et déployer une solution Sage qui a optimisé notre production de 30%."
+                    </p>
+                    <p className="font-bold text-white">— Directeur Général, Industrie Agroalimentaire</p>
+                 </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
