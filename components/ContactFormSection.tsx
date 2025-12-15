@@ -1,9 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle, Lock } from 'lucide-react';
 
 const ContactFormSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const testimonials = [
+    {
+      text: "L'équipe Thalès a su comprendre nos enjeux industriels et déployer une solution Sage qui a optimisé notre production de 30%.",
+      author: "Directeur Général",
+      company: "Industrie Agroalimentaire"
+    },
+    {
+      text: "Grâce à l'automatisation de nos processus avec JobRouter, nous avons réduit nos délais de validation de factures de 5 jours à 4 heures.",
+      author: "DAF",
+      company: "Groupe de Grande Distribution"
+    },
+    {
+      text: "La migration de notre infrastructure vers Azure s'est faite sans aucune interruption de service. Une expertise technique irréprochable.",
+      author: "DSI",
+      company: "Holding Financière"
+    },
+    {
+      text: "Un accompagnement sur mesure pour la sécurisation de nos données critiques. Nous dormons enfin sur nos deux oreilles.",
+      author: "Responsable Sécurité",
+      company: "Laboratoire Pharmaceutique"
+    },
+    {
+      text: "Thalès ne se contente pas d'installer des logiciels, ils transforment véritablement la manière de travailler de nos équipes.",
+      author: "DRH",
+      company: "Secteur Public"
+    },
+    {
+      text: "Leur réactivité et leur compréhension du métier du BTP nous ont permis de structurer notre croissance à l'international.",
+      author: "Directeur Opérationnel",
+      company: "Entreprise de BTP"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -180,17 +221,48 @@ const ContactFormSection: React.FC = () => {
               </li>
             </ul>
 
-            <div className="bg-thales-800/50 p-6 rounded-lg border border-thales-700 backdrop-blur-sm">
-              <div className="flex items-start gap-4">
-                 <div className="w-12 h-12 rounded-full bg-thales-700 flex-shrink-0 flex items-center justify-center text-thales-300">
-                    <span className="font-bold text-xl">“</span>
-                 </div>
-                 <div>
-                    <p className="italic text-slate-300 mb-4">
-                      "L'équipe Thalès a su comprendre nos enjeux industriels et déployer une solution Sage qui a optimisé notre production de 30%."
-                    </p>
-                    <p className="font-bold text-white">— Directeur Général, Industrie Agroalimentaire</p>
-                 </div>
+            <div className="bg-thales-800/50 p-6 rounded-lg border border-thales-700 backdrop-blur-sm relative min-h-[180px] flex flex-col justify-center">
+              {testimonials.map((testi, idx) => (
+                <div 
+                  key={idx}
+                  className={`transition-all duration-700 absolute inset-0 p-6 flex flex-col justify-center ${activeTestimonial === idx ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+                >
+                  <div className="flex items-start gap-4">
+                     <div className="w-12 h-12 rounded-full bg-thales-700 flex-shrink-0 flex items-center justify-center text-thales-300">
+                        <span className="font-bold text-xl">“</span>
+                     </div>
+                     <div>
+                        <p className="italic text-slate-300 mb-4 text-sm md:text-base">
+                          "{testi.text}"
+                        </p>
+                        <p className="font-bold text-white text-sm md:text-base">
+                          — {testi.author}, <span className="font-normal text-thales-300">{testi.company}</span>
+                        </p>
+                     </div>
+                  </div>
+                </div>
+              ))}
+              {/* Invisible spacer to maintain height if needed, though absolute positioning handles layout */}
+              <div className="invisible p-6">
+                 <div className="flex items-start gap-4">
+                     <div className="w-12 h-12"></div>
+                     <div>
+                        <p className="mb-4">Spacer text to keep height consistent across slides mostly.</p>
+                        <p>Spacer Author</p>
+                     </div>
+                  </div>
+              </div>
+              
+              {/* Dots Indicator */}
+              <div className="absolute bottom-4 left-0 w-full flex justify-center gap-2">
+                {testimonials.map((_, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => setActiveTestimonial(idx)}
+                    className={`w-2 h-2 rounded-full transition-all ${activeTestimonial === idx ? 'bg-thales-400 w-4' : 'bg-thales-800'}`}
+                    aria-label={`Voir avis ${idx + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
