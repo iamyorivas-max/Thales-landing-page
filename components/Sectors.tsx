@@ -25,7 +25,7 @@ const Sectors: React.FC = () => {
           {sectors.map((sector, idx) => (
             <div key={idx} className="bg-white p-6 rounded-lg shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-4 hover:border-thales-500 hover:shadow-md transition-all group cursor-default">
               <div className="text-slate-400 group-hover:text-thales-700 transition-colors">
-                {React.cloneElement(sector.icon as React.ReactElement, { size: 32 })}
+                {React.cloneElement(sector.icon as React.ReactElement<any>, { size: 32 })}
               </div>
               <span className="font-semibold text-slate-800 text-sm md:text-base">{sector.name}</span>
             </div>

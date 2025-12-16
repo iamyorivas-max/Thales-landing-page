@@ -7,6 +7,7 @@ import TrustSection from './components/TrustSection';
 import Sectors from './components/Sectors';
 import Certifications from './components/Certifications';
 import ContactFormSection from './components/ContactFormSection';
+import Awards from './components/Awards';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Sectors />
         <Certifications />
         <ContactFormSection />
+        <Awards />
       </main>
       <Footer />
     </div>
