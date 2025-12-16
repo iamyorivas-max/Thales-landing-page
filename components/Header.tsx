@@ -60,7 +60,7 @@ const Header: React.FC = () => {
         {/* CTA Button Desktop */}
         <div className="hidden md:flex items-center gap-4">
           <a 
-            href="tel:+212500000000" 
+            href="tel:+212522548780" 
             className="flex items-center gap-2 text-slate-600 hover:text-thales-700 text-sm font-medium"
           >
             <Phone size={16} />
