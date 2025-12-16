@@ -9,18 +9,12 @@ const Footer: React.FC = () => {
           
           <div className="col-span-1 md:col-span-2">
             <div className="mb-6">
-              {/* Logo SVG White Version */}
-              <svg viewBox="0 0 220 54" className="h-10 md:h-12 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <text x="0" y="34" fontSize="32" fontWeight="bold" fontFamily="sans-serif" fill="white" letterSpacing="-1">TH</text>
-                
-                {/* Stylized A */}
-                <path d="M53 34 L62 8 L71 34" stroke="#00aeef" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M56 26 L68 26" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-                
-                <text x="74" y="34" fontSize="32" fontWeight="bold" fontFamily="sans-serif" fill="white" letterSpacing="-1">LES</text>
-                
-                <text x="2" y="50" fontSize="11" fontWeight="500" fontFamily="sans-serif" fill="white" letterSpacing="0.28em" className="uppercase opacity-80">Informatique</text>
-              </svg>
+              {/* Logo Image White Version (via filter) */}
+              <img 
+                src="https://thales.ma/wp-content/uploads/2019/12/logo-thales2020.png" 
+                alt="Thalès Informatique" 
+                className="h-10 md:h-12 w-auto object-contain brightness-0 invert opacity-90"
+              />
             </div>
             <p className="mb-6 max-w-sm text-slate-300">
               Partenaire de confiance des entreprises marocaines depuis 28 ans pour l'intégration ERP, la gestion des infrastructures et la transformation digitale.
