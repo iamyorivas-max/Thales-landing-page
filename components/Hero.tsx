@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-slate-50 overflow-hidden">
+    <section className="relative pt-40 pb-20 md:pt-52 md:pb-32 bg-slate-50 overflow-hidden">
       {/* Abstract Background Element */}
       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-70 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] bg-slate-200 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
