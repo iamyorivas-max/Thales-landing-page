@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PartyPopper, Clock } from 'lucide-react';
+import { PartyPopper } from 'lucide-react';
 
 const AnnouncementBar: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -61,13 +61,6 @@ const AnnouncementBar: React.FC = () => {
             <span className="text-thales-400 font-bold">:</span>
             <TimeUnit value={timeLeft.seconds} label="S" />
           </div>
-        </div>
-        
-        <div className="hidden md:block w-px h-4 bg-thales-500/50"></div>
-        
-        <div className="flex items-center gap-2 text-thales-200">
-           <Clock size={14} />
-           <span>15 Février 2026</span>
         </div>
 
       </div>
